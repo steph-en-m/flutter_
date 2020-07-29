@@ -30,7 +30,6 @@ class ToDo extends StatelessWidget{
             ),
             SizedBox(height: 25.0,),
             TextField(
-              
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,

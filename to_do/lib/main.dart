@@ -4,9 +4,9 @@ void main() => runApp(MaterialApp(
       home: ToDo(),
     ));
 
-class ToDo extends StatelessWidget{
+class ToDo extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
@@ -28,16 +28,17 @@ class ToDo extends StatelessWidget{
                 letterSpacing: 2.0,
               ),
             ),
-            SizedBox(height: 25.0,),
-            TextField(
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2.0,
-              )
+            SizedBox(
+              height: 25.0,
             ),
+            TextField(
+                style: TextStyle(
+              color: Colors.amberAccent[200],
+              letterSpacing: 2.0,
+            )),
           ],
         ),
       ),
-    )
+    );
   }
 }

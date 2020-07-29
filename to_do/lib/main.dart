@@ -46,10 +46,15 @@ class ToDo extends StatelessWidget {
             ),
 
             TextField(
-                style: TextStyle(
-              color: Colors.amberAccent[200],
-              letterSpacing: 2.0,
-            )),
+                obscureText: true,
+                cursorColor: Colors.amberAccent[200],
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Task',
+                    labelStyle: TextStyle(
+                      color: Colors.amberAccent[200],
+                      letterSpacing: 2.0,
+                    ))),
           ],
         ),
       ),

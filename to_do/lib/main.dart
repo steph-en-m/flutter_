@@ -26,6 +26,7 @@ class ToDo extends StatelessWidget {
                 radius: 40.0,
               ),
             ),
+// Add spacing between avatar and Task input area
             Divider(
               height: 40.0,
               color: Colors.grey[800],

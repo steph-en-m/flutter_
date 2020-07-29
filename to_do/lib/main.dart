@@ -20,6 +20,16 @@ class ToDo extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/dvm.jpg'),
+                radius: 40.0,
+              ),
+            ),
+            Divider(
+              height: 40.0,
+              color: Colors.grey[800],
+            ),
             Text(
               'TASK',
               style: TextStyle(

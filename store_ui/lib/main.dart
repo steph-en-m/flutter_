@@ -4,9 +4,9 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-      primaryColor: const Color(0xFF02BB9F),
-      primaryColorDark: const Color(0xFF167F67),
-      accentColor: const Color(0xFF167F67),
+      primaryColor: Colors.blue[800],
+      primaryColorDark: Colors.blue[800],
+      accentColor: Colors.blue[800],
     ),
     home: DropdownScreen(),
   ));

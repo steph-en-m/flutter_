@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,13 +12,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'The Awesome Store',
+      title: 'My Store',
       theme: ThemeData(
-        primaryColor: Color(0xffff6101),
+        primaryColor: Colors.green[400],
       ),
-      home: MyHomePage(title: 'Sales Dashboard 2020'),
+      home: MyHomePage(title: 'My Store'),
     );
   }
+}
+
+class Item {
+  const Item(this.name, this.icon);
+  final String name;
+  final Icon icon;
 }
 
 class MyHomePage extends StatefulWidget {
@@ -31,6 +37,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Item selectedMenu;
   var data = [0.0, 1.0, 1.5, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, 0.0];
   var data1 = [0.0, -2.0, 3.5, -2.0, 0.5, 0.7, 0.8, 1.0, 2.0, 3.0, 3.2];
 
@@ -46,15 +53,24 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
+  List<Item> menu = <Item>[
+    const Item('Menu', Icon(Icons.menu)),
+    const Item('Items', Icon(Icons.shopping_basket)),
+    const Item('Cart', Icon(Icons.shopping_cart)),
+    const Item('Contact', Icon(Icons.email)),
+    const Item('help', Icon(Icons.help)),
+    Item('Checkout', Icon(Icons.credit_card)),
+  ];
+
   Material myTextItems(String title, String subtitle) {
     return Material(
       color: Colors.white,
-      elevation: 14.0,
+      elevation: 8.0,
       borderRadius: BorderRadius.circular(24.0),
-      shadowColor: Color(0x802196F3),
+      shadowColor: Colors.green[100],
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(5.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -62,21 +78,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Text(
                       title,
                       style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         color: Colors.blueAccent,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Text(
                       subtitle,
                       style: TextStyle(
-                        fontSize: 30.0,
+                        fontSize: 15.0,
                       ),
                     ),
                   ),
@@ -92,12 +108,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Material myCircularItems(String title, String subtitle) {
     return Material(
       color: Colors.white,
-      elevation: 14.0,
+      elevation: 8.0,
       borderRadius: BorderRadius.circular(24.0),
-      shadowColor: Color(0x802196F3),
+      shadowColor: Colors.green[100],
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(5.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -105,32 +121,33 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Text(
                       title,
                       style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         color: Colors.blueAccent,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Text(
                       subtitle,
                       style: TextStyle(
-                        fontSize: 30.0,
+                        fontSize: 20.0,
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
+                  Expanded(
+                      child: Padding(
+                    padding: EdgeInsets.all(5.0),
                     child: AnimatedCircularChart(
                       size: const Size(100.0, 100.0),
                       initialChartData: circularData,
                       chartType: CircularChartType.Pie,
                     ),
-                  ),
+                  )),
                 ],
               ),
             ],
@@ -143,12 +160,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Material mychart1Items(String title, String priceVal, String subtitle) {
     return Material(
       color: Colors.white,
-      elevation: 14.0,
+      elevation: 8.0,
       borderRadius: BorderRadius.circular(24.0),
-      shadowColor: Color(0x802196F3),
+      shadowColor: Colors.green[100],
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(2.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -170,29 +187,30 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text(
                       priceVal,
                       style: TextStyle(
-                        fontSize: 30.0,
+                        fontSize: 17.0,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(1.0),
+                    padding: EdgeInsets.all(2.0),
                     child: Text(
                       subtitle,
                       style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 17.0,
                         color: Colors.blueGrey,
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(1.0),
+                  Expanded(
+                      child: Padding(
+                    padding: EdgeInsets.all(2.0),
                     child: new Sparkline(
                       data: data,
                       lineColor: Color(0xffff6101),
                       pointsMode: PointsMode.all,
                       pointSize: 8.0,
                     ),
-                  ),
+                  )),
                 ],
               ),
             ],
@@ -205,12 +223,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Material mychart2Items(String title, String priceVal, String subtitle) {
     return Material(
       color: Colors.white,
-      elevation: 14.0,
+      elevation: 8.0,
       borderRadius: BorderRadius.circular(24.0),
-      shadowColor: Color(0x802196F3),
+      shadowColor: Colors.green[100],
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(5.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -222,31 +240,33 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text(
                       title,
                       style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 17.0,
                         color: Colors.blueAccent,
                       ),
                     ),
                   ),
-                  Padding(
+                  Expanded(
+                      child: Padding(
                     padding: EdgeInsets.all(1.0),
                     child: Text(
                       priceVal,
                       style: TextStyle(
-                        fontSize: 30.0,
+                        fontSize: 20.0,
                       ),
                     ),
-                  ),
+                  )),
                   Padding(
                     padding: EdgeInsets.all(1.0),
                     child: Text(
                       subtitle,
                       style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 17.0,
                         color: Colors.blueGrey,
                       ),
                     ),
                   ),
-                  Padding(
+                  Expanded(
+                      child: Padding(
                     padding: EdgeInsets.all(1.0),
                     child: new Sparkline(
                       data: data1,
@@ -257,7 +277,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         colors: [Colors.amber[800], Colors.amber[200]],
                       ),
                     ),
-                  ),
+                  )),
                 ],
               ),
             ],
@@ -271,48 +291,77 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {
-              //
-            }),
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.white),
+        ),
         actions: <Widget>[
-          IconButton(
-              icon: Icon(FontAwesomeIcons.chartLine),
-              onPressed: () {
-                //
-              }),
+          DropdownButton<Item>(
+            dropdownColor: Colors.lightGreenAccent[50],
+            hint: Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
+            value: selectedMenu,
+            onChanged: (Item value) {
+              setState(() {
+                selectedMenu = value;
+              });
+            },
+            items: menu.map((Item menu) {
+              return DropdownMenuItem<Item>(
+                value: menu,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    menu.icon,
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      menu.name,
+                      style: TextStyle(color: Colors.deepPurple[500]),
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
+          ),
         ],
       ),
       body: Container(
-        color: Color(0xffE5E5E5),
+        color: Colors.green[50],
         child: StaggeredGridView.count(
           crossAxisCount: 4,
-          crossAxisSpacing: 12.0,
-          mainAxisSpacing: 12.0,
+          crossAxisSpacing: 5.0,
+          mainAxisSpacing: 5.0, //8
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.all(5.0),
               child:
-                  mychart1Items("Sales by Month", "421.3M", "+12.9% of target"),
-            ),
-            Padding(
+                  mychart1Items("Monthly Sales", "8.0M UGX", "+1.9% increment"),
+            )),
+            Expanded(
+                child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: myCircularItems("Quarterly Profits", "68.7M"),
-            ),
-            Padding(
+              child: myCircularItems("Profits", "1.2M UGX"),
+            )),
+            Expanded(
+                child: Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: myTextItems("Mktg. Spend", "48.6M"),
-            ),
-            Padding(
+              child: myTextItems("Expenditure", "4M UGX"),
+            )),
+            Expanded(
+                child: Padding(
               padding: const EdgeInsets.only(right: 8.0),
-              child: myTextItems("Users", "25.5M"),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: mychart2Items("Conversion", "0.9M", "+19% of target"),
-            ),
+              child: myTextItems("Number of Customers", "34"),
+            )),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: mychart2Items("Conversion", "1.2M", "+1.2% of target"),
+            )),
           ],
           staggeredTiles: [
             StaggeredTile.extent(4, 250.0),

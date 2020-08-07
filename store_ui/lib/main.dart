@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-//import 'package:charts_flutter/flutter.dart'; as charts
-//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:store_ui/screens/home.dart';
+import 'package:store_ui/screens/loading.dart';
+import 'package:store_ui/screens/stats.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-      primaryColor: Colors.blue[800],
-      primaryColorDark: Colors.blue[800],
-      accentColor: Colors.blue[800],
-    ),
-    home: DropdownScreen(),
+    initialRoute: '/home', //testing-purposes
+    routes: {
+      '/': (context) => Loading(),
+      '/home': (context) => Home(),
+      '/stats': (context) => Stats(),
+    },
   ));
 }
 
+/*
 class Item {
   const Item(this.name, this.icon);
   final String name;
@@ -136,6 +138,7 @@ class DropdownScreenState extends State<DropdownScreen> {
   }
 }
 
+
 /*
 // This app is a stateful, it tracks the user's current choice.
 class BasicAppBarSample extends StatefulWidget {
@@ -240,4 +243,5 @@ class ChoiceCard extends StatelessWidget {
 void main() {
   runApp(BasicAppBarSample());
 }
+*/
 */

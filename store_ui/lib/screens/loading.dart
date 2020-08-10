@@ -3,8 +3,8 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Sales {
-  String item; //item
-  String month; //year
+  String item;
+  String month;
   int quantity;
 
   Sales(this.item, this.month, this.quantity);
@@ -49,11 +49,11 @@ class _LoadingState extends State<Loading> {
 
     var piedata = [
       new Task('T-shirts', 23.0, Colors.amberAccent[700]),
-      new Task('Trousers', 12.0, Colors.teal[800]),
-      new Task('TV-sets', 55.0, Colors.green[200]),
+      new Task('Trousers', 12.0, Colors.red[800]),
+      new Task('TV-sets', 55.0, Colors.green[800]),
       new Task('Jeans', 43.0, Colors.blue[700]),
-      new Task('Men\'s Shoes', 33.0, Colors.purple[300]),
-      new Task('Bags', 6.0, Colors.grey),
+      new Task('Men\'s Shoes', 33.0, Colors.purple[800]),
+      new Task('Bags', 6.0, Colors.grey[800]),
     ];
 
     _seriesData.add(
@@ -125,12 +125,11 @@ class _LoadingState extends State<Loading> {
             bottom: TabBar(
               indicatorColor: Color(0xff9962D0),
               tabs: [
-                Tab(icon: Icon(Icons.menu)),
                 Tab(icon: Icon(FontAwesomeIcons.solidChartBar)),
                 Tab(icon: Icon(FontAwesomeIcons.chartPie)),
               ],
             ),
-            title: Text('The Awesome Store'),
+            title: Text('Store Sales Statistics'),
           ),
           body: TabBarView(
             children: [

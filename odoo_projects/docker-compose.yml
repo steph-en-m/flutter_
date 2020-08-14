@@ -1,0 +1,57 @@
+version: '0.1'
+
+services:
+
+  # Database Container Service definition
+  # ------------
+  #
+  # Information needed to start up a postgresql container
+  db:
+    image: postgres
+
+  # Database Env. Variables
+  # Should be the same as database user defined in the web
+  # container env. variables
+    environment:
+      - POSTGRES_PASSWORD=steve
+      - POSTGRES_USER=steve
+      - POSTGRES_DB=postgres
+
+  # Web Application Service Definition
+  # -------
+  #
+  # Information needed to start up an odoo web app container
+  web:
+    image: odoo
+    depends_on:
+        - db
+
+    # Port Mapping
+    # --------
+    # Mapping a port on the host machine to a port inside
+    # the container (to the right)
+    ports:
+      - 5000:8069
+
+    # Data Volumes
+    # -------
+    #
+    # Define file we are mapping from the host machine
+    # into the container
+
+    volumes:
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+
+    # Odoo environment variables
+    # -----------
+    # The Odoo image use a few different env. variables
+    # when running to connect to the postgres db.
+    #
+    # They should be the same as the database user defined in the
+    # db container env. variables
+    environment:
+      - HOST=db
+      - USER=steve
+      - PASSWORD=steve
+

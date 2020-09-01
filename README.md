@@ -1,3 +1,3 @@
-# flutter_projects
+# Flutter_projects
 
-A collection of sample mobile apps developed with Flutter
+A collection of sample mobile app UIs developed with Flutter
